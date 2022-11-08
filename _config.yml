@@ -66,20 +66,10 @@ featured-condition-size: 1             # 相同标签数量大于这个数，才
 # Friends
 friends: [
     {
-        title: "七夏浅笑",
-        href: "http://julydate.com/"
+        title: "北京大学网络服务",
+        href: "https://its.pku.edu.cn/"
     },{
-        title: "可视化",
-        href: "https://gujiayu7676.github.io/"
-
-    },{
-        title: "Jiyiren.Blog",
-        href: "https://jiyiren.github.io/"
-    },{
-        title: "由我管理的NoSchoolBlog",
-        href: "https://kalicn.github.io/noschoolblog/"
-    },{
-        title: "KaliBlog分站",
-        href: "https://kalicnblog.blogspot.com"
+        title: "Example",
+        href: "https://Example/"
     }    
 ]
