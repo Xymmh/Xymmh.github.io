@@ -11,8 +11,8 @@ github_repo: "https://github.com/xymmh/xymmh.github.io.git" # you code repositor
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "与其看教科书，还不如读Linux源码。"
-sidebar-avatar: /img/yeswecode.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "浮生一场梦，人间几度秋。"
+sidebar-avatar: /img/Myavatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
