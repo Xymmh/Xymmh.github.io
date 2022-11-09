@@ -48,7 +48,7 @@ gitalk:
   enable: true   #是否开启Gitalk评论
   clientID: 6cd58bbe748b1f6dd071        # 嘿，别乱看我的秘密                #生成的clientID
   clientSecret: 75925c9ccc61b0afeeddc97543e940876762fdf7    #生成的clientSecret
-  repo: Xymmh.github.io    #仓库名称
+  repo: blog-comments    #仓库名称
   owner: Xymmh    #github用户名
   admin: Xymmh
   distractionFreeMode: false #是否启用类似FB的阴影遮罩
