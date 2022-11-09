@@ -66,10 +66,13 @@ featured-condition-size: 1             # 相同标签数量大于这个数，才
 # Friends
 friends: [
     {
-        title: "北京大学网络服务",
-        href: "https://its.pku.edu.cn/"
-    },{
         title: "求闻百科，共笔求闻",
         href: "https://www.qiuwenbaike.cn/"
-    }    
+    },{
+        title: "BYRBT",
+        href: "https://byr.pt/"
+    },{
+        title: "500px摄影社区",
+        href: "https://500px.com.cn/"
+    }        
 ]
