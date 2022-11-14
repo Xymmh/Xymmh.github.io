@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      BJUTcoder-C语言单链表的基础操作
-subtitle:   My blog was launched on 2022.11.09
+subtitle:   BJUTcoder
 date:       2022-11-14
 author:     Xymmh Wang
 header-img: img/titlephoto1.jpg
@@ -10,7 +10,7 @@ tags:
     - C语言
 ---
 
-<code data-enlighter-language="raw" class="EnlighterJSRAW"></code><code data-enlighter-language="raw" class="EnlighterJSRAW">
+~~~
 #include <stdio.h> 
 #include <stdlib.h>
 
@@ -213,4 +213,4 @@ NODE *destroy(NODE *L)
 	printf("完成！\n");
 	return L;  //记得返回表头指针 
 } 
-</code><code data-enlighter-language="raw" class="EnlighterJSRAW"></code>
+~~~
