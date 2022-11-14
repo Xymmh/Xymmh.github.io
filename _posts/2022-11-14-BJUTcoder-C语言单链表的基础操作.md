@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      BJUTcoder-C语言单链表的基础操作
-subtitle:   BJUTcoder-Basic operation of singly linked list in C language
+title:      BJUTcoder - C语言单链表的基础操作
+subtitle:   BJUTcoder - Basic operation of singly linked list in C language
 date:       2022-11-14
 author:     Xymmh Wang
-header-img: img/titlephoto1.jpg
+header-img: img/titlephoto5.jpg
 catalog: false
 tags:
     - C语言
