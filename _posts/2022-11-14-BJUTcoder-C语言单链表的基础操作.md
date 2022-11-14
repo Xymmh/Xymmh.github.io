@@ -8,6 +8,7 @@ header-img: img/titlephoto5.jpg
 catalog: false
 tags:
     - C语言
+    - BJUT
 ---
 
 最近学到C语言的单链表，虽然实际上不难，但理解起来真是个问题。
