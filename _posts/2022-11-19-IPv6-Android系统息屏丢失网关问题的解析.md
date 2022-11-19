@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      IPv6-Android手机息屏丢失IPv6网关问题的分析
+title:      IPv6 - Android手机息屏丢失IPv6网关问题的分析
 subtitle:   Analysis of the problem that IPv6 gateway disappear after screen off on Android phone.
 date:       2022-11-19
 author:     Xymmh Wang
@@ -32,11 +32,8 @@ tags:
 
 https://issuetracker.google.com/issues/241959699
 
-<br>
 
 其中提到：
-
-<br>
 
 > On a Pixel 6 Pro running Android 12 and on a wifi network, IPv6 RAs (router advertisements) are not received when the screen is off.  This result is that the > device loses IPv6 connectivity after the RA Lifetime has passed, even if it is a reasonable value such as 1800 seconds.
 
@@ -47,8 +44,6 @@ https://issuetracker.google.com/issues/241959699
 而RA的功能其中之一就是宣告默认网关，
 
 因此，在RA Lifetime（生存周期，一般路由器默认为1800秒）过去后，因手机未在RA Lifetime内接收RA通告，所以会丢失IPv6网关及IPv6连接。
-
-<br>
 <br>
 
 作者使用了抓包的方式证明了这一情况确实存在：
@@ -83,8 +78,6 @@ https://issuetracker.google.com/issues/241959699
 >(Oddly, unicast ICMPv6 echo replies/responses do reach the phone even when when dozing, so at least receiving 
 
 <br>
-
-
 这个问题违背了安卓的兼容性原则：
 
 
@@ -103,7 +96,6 @@ https://issuetracker.google.com/issues/241959699
 
 [C-0-5]速率限制不得导致设备在使用至少 180 秒的 RA 生存期的任何符合 IPv6 的网络上丢失 IPv6 连接。
 
-<br>
 
 ## 结论
 
@@ -112,7 +104,6 @@ https://issuetracker.google.com/issues/241959699
 且根据网友反馈，这个问题在安卓13上仍然存在。
 
 <br>
-
 一位安卓工程师回复：
 
 >We have shared this with our product and engineering team and will update this issue with more information as it becomes available.
@@ -120,7 +111,6 @@ https://issuetracker.google.com/issues/241959699
 说明他们已在着手解决这个问题
 
 <br>
-
 ## 总结
 
 很多人在实际使用中没有发现这个问题的原因，是因为IPv4的连接性不会因为息屏而受到影响，设备在尝试连接IPv6失败失败后会Fallback回IPv4，而目前又没有什么应用只有IPv6可用。
@@ -130,7 +120,6 @@ https://issuetracker.google.com/issues/241959699
 很少有用户真正关注他们的设备是否一直处于IPv6可用状态，因此这种假象也给IPv6的推行带来了一定阻力。
 
 <br>
-
 希望这个问题能尽早被解决。
 
 
