@@ -22,8 +22,6 @@ tags:
 
 *Openwrt系统路由器的默认RA Lifetime为1800s，RA max interval为600s，RA min interval为200s，实际的RA interval是介于max interval与min interval之间的随机数。
 
-<br>
-
 ## 分析
 
 我发现这个现象后，我一直认为是Openwrt和安卓之间有什么兼容性问题，或者是我的配置问题，曾多次在Telegram上求助Openwrt编译大群人员，无果。
@@ -32,19 +30,15 @@ tags:
 
 https://issuetracker.google.com/issues/241959699
 
-
 其中提到：
 
 > On a Pixel 6 Pro running Android 12 and on a wifi network, IPv6 RAs (router advertisements) are not received when the screen is off.  This result is that the > device loses IPv6 connectivity after the RA Lifetime has passed, even if it is a reasonable value such as 1800 seconds.
-
-<br>
 
 意思就是当Pixel 6的屏幕息屏时，路由器定时发出的RA（路由通告）信息将不会被接收，
 
 而RA的功能其中之一就是宣告默认网关，
 
 因此，在RA Lifetime（生存周期，一般路由器默认为1800秒）过去后，因手机未在RA Lifetime内接收RA通告，所以会丢失IPv6网关及IPv6连接。
-<br>
 
 作者使用了抓包的方式证明了这一情况确实存在：
 <br>
@@ -80,13 +74,11 @@ https://issuetracker.google.com/issues/241959699
 <br>
 这个问题违背了安卓的兼容性原则：
 
-
 >Android 12 Compatibility rule 7.4.5.2 rule [C-0-4] and [C-0-5].  Per:  https://source.android.com/compatibility/12/android-12-cdd#7452_ipv6
 >"[C-0-3] MUST enable IPv6 by default.
 >    MUST ensure that IPv6 communication is as reliable as IPv4, for example:
 >        [C-0-4] MUST maintain IPv6 connectivity in doze mode.
 >        [C-0-5] Rate-limiting MUST NOT cause the device to lose IPv6 connectivity on any IPv6-compliant network that uses RA lifetimes of at least 180 >seconds."
-
 
 [C-0-3] 必须默认启用 IPv6。
 
@@ -110,7 +102,7 @@ https://issuetracker.google.com/issues/241959699
 
 说明他们已在着手解决这个问题
 
-<br>
+
 ## 总结
 
 很多人在实际使用中没有发现这个问题的原因，是因为IPv4的连接性不会因为息屏而受到影响，设备在尝试连接IPv6失败失败后会Fallback回IPv4，而目前又没有什么应用只有IPv6可用。
@@ -119,7 +111,6 @@ https://issuetracker.google.com/issues/241959699
 
 很少有用户真正关注他们的设备是否一直处于IPv6可用状态，因此这种假象也给IPv6的推行带来了一定阻力。
 
-<br>
 希望这个问题能尽早被解决。
 
 
