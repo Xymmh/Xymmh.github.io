@@ -21,7 +21,7 @@ tags:
 使用WIFI魔盒观测IPv6默认网关存在状态可以可视化监视到此问题。
 
 *Openwrt系统路由器的默认RA Lifetime为1800s，RA max interval为600s，RA min interval为200s，实际的RA interval是介于max interval与min interval之间的随机数。
-
+<br>
 ## 分析
 
 我发现这个现象后，我一直认为是Openwrt和安卓之间有什么兼容性问题，或者是我的配置问题，曾多次在Telegram上求助Openwrt编译大群人员，无果。
@@ -71,7 +71,6 @@ https://issuetracker.google.com/issues/241959699
 >
 >(Oddly, unicast ICMPv6 echo replies/responses do reach the phone even when when dozing, so at least receiving 
 
-<br>
 这个问题违背了安卓的兼容性原则：
 
 >Android 12 Compatibility rule 7.4.5.2 rule [C-0-4] and [C-0-5].  Per:  https://source.android.com/compatibility/12/android-12-cdd#7452_ipv6
@@ -88,21 +87,20 @@ https://issuetracker.google.com/issues/241959699
 
 [C-0-5]速率限制不得导致设备在使用至少 180 秒的 RA 生存期的任何符合 IPv6 的网络上丢失 IPv6 连接。
 
-
+<br>
 ## 结论
 
 因此可以基本确定，这个问题是安卓系统的一个BUG，并不是路由器的odhcpd软件的配置问题。
 
 且根据网友反馈，这个问题在安卓13上仍然存在。
 
-<br>
 一位安卓工程师回复：
 
 >We have shared this with our product and engineering team and will update this issue with more information as it becomes available.
 
 说明他们已在着手解决这个问题
 
-
+<br>
 ## 总结
 
 很多人在实际使用中没有发现这个问题的原因，是因为IPv4的连接性不会因为息屏而受到影响，设备在尝试连接IPv6失败失败后会Fallback回IPv4，而目前又没有什么应用只有IPv6可用。
