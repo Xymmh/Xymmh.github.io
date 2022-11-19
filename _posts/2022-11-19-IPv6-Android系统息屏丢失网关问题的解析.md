@@ -21,6 +21,7 @@ tags:
 使用WIFI魔盒观测IPv6默认网关存在状态可以可视化监视到此问题。
 
 *Openwrt系统路由器的默认RA Lifetime为1800s，RA max interval为600s，RA min interval为200s，实际的RA interval是介于max interval与min interval之间的随机数。
+
 <br>
 ## 分析
 
