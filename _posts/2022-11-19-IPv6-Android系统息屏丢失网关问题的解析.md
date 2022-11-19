@@ -4,7 +4,7 @@ title:      IPv6 - Android手机息屏丢失IPv6网关问题的分析
 subtitle:   Analysis of the problem that IPv6 gateway disappear after screen off on Android phone.
 date:       2022-11-19
 author:     Xymmh Wang
-header-img: img/titlephoto5.jpg
+header-img: img/titlephoto6.jpg
 catalog: True
 tags:
     - IPv6
