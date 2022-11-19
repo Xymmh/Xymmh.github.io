@@ -99,7 +99,7 @@ https://issuetracker.google.com/issues/241959699
 
 >We have shared this with our product and engineering team and will update this issue with more information as it becomes available.
 
-说明他们已在着手解决这个问题
+说明他们已在着手解决这个问题。
 
 <br>
 ## 总结
