@@ -1,10 +1,10 @@
 # Site settings
-title:  DoHaveFaith
+title:  DoHaveFaith文档站
 SEOTitle: DoHaveFaith
 header-img: img/titlephoto10.png
 email: my@havfaith.cn
-description: "Do have faith in what you are doing."
-keyword: "Xymmh's Blog, DoHaveFaith, Xymmh的博客"
+description: "春日雨，夏鸣蝉，明天是个好天气"
+keyword: "DoHaveFaith文档站"
 url: "https://xymmh.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/xymmh/xymmh.github.io.git" # you code repository
