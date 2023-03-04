@@ -1,0 +1,172 @@
+---
+layout:     post
+title:      使用EasyX制作打砖块游戏
+subtitle:   Use Easyx to make a brick-breaking game in C.
+date:       2023-03-04
+author:     Xymmh Wang
+header-img: img/titlephoto5.jpg
+catalog: false
+tags:
+    - C语言
+---
+
+注释非常详细，希望对刚入门的新手有一定帮助。
+
+效果：
+![](/img/屏幕截图 2023-03-04 145614.png)
+
+~~~
+
+#include<conio.h>
+#include<graphics.h>
+
+//我习惯于将常量大写，便于识别
+#define WINDOW_Width 800
+#define WINDOW_Height 600  //窗口大小
+#define BRICK_Width 100
+#define BRICK_Height 70  //砖块大小
+#define BRICK_ROWS 2
+#define BRICK_COLS 8  //砖块行、列数
+#define BROAD_Width (BRICK_Width * 2)
+#define BROAD_Height (BRICK_Height * 1/2)  //底板大小
+#define CIRCLE_Radius 20  //圆球半径
+
+//我习惯于将变量小写，便于识别
+int broad_x = (WINDOW_Width - BROAD_Width) / 2;  //底板的左上角x坐标
+int broad_y = WINDOW_Height - BROAD_Height;  //底板的左上角y坐标
+int circle_x = WINDOW_Width / 2;  //球的中心x坐标
+int circle_y = WINDOW_Height - BROAD_Height - CIRCLE_Radius;  //球的中心y坐标
+int x_moving = 6;
+int y_moving = -6;  //x、y移动量
+
+//由于无简便方式将所有值赋为true，故将false视为有砖块，true视为无砖块
+bool brick[BRICK_ROWS][BRICK_COLS] = { 0 };
+
+void DrawBrick(int x, int y)  //画砖块
+{
+	if (brick[x][y] == 0)  //将值为false的位置画上砖块
+	{
+		setlinecolor(BLACK);
+		setfillcolor(RGB(0, 150, 195));
+		fillrectangle(y * BRICK_Width, x * BRICK_Height, y * BRICK_Width + BRICK_Width, x * BRICK_Height + BRICK_Height);  
+		//由于行、列的位置和坐标轴中x、y的位置相反，故此处先写y后写x
+	}
+}
+
+void DrawAllBrick()  //画出所有方块
+{
+	for (int i = 0; i < BRICK_ROWS; i++)
+	{
+		for (int j = 0; j < BRICK_COLS; j++)
+			DrawBrick(i, j);
+	}
+}
+
+void DrawBroad()  //画出板子
+{
+	setlinecolor(BLACK);
+	setfillcolor(RGB(235, 120, 120));
+	fillrectangle(broad_x, broad_y, broad_x + BROAD_Width, broad_y + BROAD_Height);
+}
+
+void DrawCircle()  //画出圆球
+{
+	setlinecolor(BLACK);
+	setfillcolor(RGB(235, 190, 160));
+	fillcircle(circle_x, circle_y, CIRCLE_Radius);
+}
+
+void DrawAll()  //画出所有游戏画面
+{
+	BeginBatchDraw();  
+
+	cleardevice();
+	DrawAllBrick();
+	DrawBroad();
+	DrawCircle();
+
+	EndBatchDraw();  //BeginBatchDraw和EndBatchDraw两函数之间的内容将被一块画出来，防止闪烁
+}
+
+void CircleMovement()  //小球移动
+{
+	circle_x += x_moving;
+	circle_y += y_moving;
+}
+
+int BrickRemoval()  //碰撞后删除砖块
+{
+	int remove_brick_col = circle_x / BRICK_Width;  //利用int类型的取整特性，很好的解决了识别所碰撞砖块的问题
+	int remove_brick_row = circle_y / BRICK_Height;
+
+	if (remove_brick_row < BRICK_ROWS && remove_brick_col < BRICK_COLS && brick[remove_brick_row][remove_brick_col] == 0)
+	{
+		brick[remove_brick_row][remove_brick_col] = 1;
+		return 1;  //移除后返回1给碰撞检测函数，使得小球弹回
+	}
+	return 0;
+}
+
+void CollisionDetection()  //碰撞检测
+{
+	if (x_moving > 0 && circle_x >= WINDOW_Width - CIRCLE_Radius)  //圆球右边界反弹
+	{
+		x_moving = -6;
+	}
+	if (y_moving < 0 && circle_y <= CIRCLE_Radius || BrickRemoval())  //圆球上边界和碰砖块反弹
+	{
+		y_moving = 6;
+	}
+	if (x_moving < 0 && circle_x <= CIRCLE_Radius)  //圆球左边界反弹
+	{
+		x_moving = 6;
+	}
+	if (y_moving > 0 && circle_y >= WINDOW_Height - CIRCLE_Radius)  //圆球下边界停止
+	{
+		x_moving = 0;
+		y_moving = 0;
+	}
+	if ((y_moving > 0) && (circle_y >= (broad_y - CIRCLE_Radius)) && (circle_x >= broad_x) && (circle_x <= (broad_x + BRICK_Width)))  //圆球碰板反弹
+	{
+		y_moving = -6;
+	}
+}
+
+void KeyboardControl()  //键盘控制板子移动
+{
+	CollisionDetection();  //确保碰撞检测的优先级高于键盘控制
+	int ch;
+	if (true == _kbhit())
+	{
+		ch = _getch();
+		switch (ch)
+		{
+		case 'a':
+		case 'A':
+		case 75:
+			if (broad_x > 0)  //确保板子不要超出左右画面
+				broad_x -= 20;
+			break;
+		case 'd':
+		case 'D':
+		case 77:
+			if ((broad_x + BROAD_Width) < WINDOW_Width)
+				broad_x += 20;
+			break;
+		}
+	}
+}
+
+int main()
+{
+	initgraph(WINDOW_Width, WINDOW_Height);
+	while (1)
+	{
+		DrawAll();
+		CircleMovement();
+		KeyboardControl();
+		BrickRemoval();
+		Sleep(10);  //此处控制整体游戏速度
+	}
+	return 0;
+}
