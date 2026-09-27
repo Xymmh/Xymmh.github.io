@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Layout from './components/Layout.jsx';
 import Home from './pages/Home.jsx';
@@ -14,15 +14,17 @@ const TITLES = {
 
 export default function App() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // 处理 404.html SPA 回退（/?p=/post/xxx 形式）
+  // 必须用 navigate 让 React Router 感知路径变化，replaceState 只改地址栏不触发渲染
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const p = params.get('p');
     if (p && p !== '/') {
-      window.history.replaceState(null, '', p);
+      navigate(p, { replace: true });
     }
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     document.title = TITLES[location.pathname] ??
