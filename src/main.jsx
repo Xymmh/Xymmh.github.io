@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider } from '@arco-design/web-react';
 import zhCN from '@arco-design/web-react/es/locale/zh-CN';
 import '@arco-design/web-react/dist/css/arco.css';
-import 'highlight.js/styles/github.css';
 import App from './App.jsx';
 import './index.css';
 

@@ -6,7 +6,21 @@
   --color-bg: #ffffff;
   --color-bg-soft: #f7f8fa;
   --color-accent: #1d2129;
+  --color-link: var(--color-link);
+  --color-header-bg: rgba(255, 255, 255, 0.92);
   --max-width: 720px;
+}
+
+[data-theme="dark"] {
+  --color-text: #e3e4e6;
+  --color-text-secondary: #a8aebd;
+  --color-text-muted: #6b7280;
+  --color-border: #2a2f3a;
+  --color-bg: #17191f;
+  --color-bg-soft: #1f222a;
+  --color-accent: #e3e4e6;
+  --color-link: #4d8eff;
+  --color-header-bg: rgba(23, 25, 31, 0.92);
 }
 
 * {
@@ -37,14 +51,14 @@ a:hover {
 }
 
 ::selection {
-  background: #1d2129;
-  color: #fff;
+  background: var(--color-text);
+  color: var(--color-bg);
 }
 
 /* ---------- 布局容器 ---------- */
 .site-header {
   border-bottom: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--color-header-bg);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
@@ -52,9 +66,9 @@ a:hover {
 }
 
 .site-header-inner {
-  max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 16px clamp(20px, 5vw, 160px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,6 +90,12 @@ a:hover {
 .site-nav a.active {
   color: var(--color-text);
   font-weight: 600;
+}
+
+.site-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .main-container {
@@ -187,12 +207,12 @@ a:hover {
 }
 
 .markdown-body a {
-  color: #165dff;
+  color: var(--color-link);
 }
 
 .markdown-body a:hover {
   text-decoration: underline;
-  color: #165dff;
+  color: var(--color-link);
 }
 
 .markdown-body ul,
@@ -292,6 +312,105 @@ a:hover {
   font-size: 13px;
   font-family: Consolas, monospace;
   flex-shrink: 0;
+}
+
+/* ---------- 文章目录 TOC ---------- */
+.toc {
+  position: fixed;
+  top: 96px;
+  right: 48px;
+  width: 220px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.toc-title {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item a {
+  display: block;
+  padding: 4px 0 4px 12px;
+  color: var(--color-text-muted);
+  border-left: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.toc-h3 a {
+  padding-left: 24px;
+  font-size: 12px;
+}
+
+.toc-item a:hover {
+  color: var(--color-text-secondary);
+}
+
+.toc-item.active a {
+  color: var(--color-text);
+  border-left-color: var(--color-text);
+  font-weight: 500;
+}
+
+/* 窄屏隐藏侧边目录，避免与正文重叠 */
+@media (max-width: 1280px) {
+  .toc {
+    display: none;
+  }
+}
+
+/* ---------- 代码块复制按钮 ---------- */
+.markdown-body pre {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 10px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.markdown-body pre:hover .code-copy-btn {
+  opacity: 1;
+}
+
+/* ---------- 回到顶部按钮 ---------- */
+.back-to-top {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 90;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- 阅读进度条 ---------- */
+.reading-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-link);
+  transition: width 0.1s;
 }
 
 /* ---------- 评论区 ---------- */
