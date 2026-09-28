@@ -1,4 +1,3 @@
-import { Tag } from '@arco-design/web-react';
 import { Link } from 'react-router-dom';
 
 export default function PostCard({ post }) {
@@ -12,9 +11,9 @@ export default function PostCard({ post }) {
       {post.tags.length > 0 && (
         <div className="post-card-tags">
           {post.tags.map((t) => (
-            <Tag key={t} size="small" color="gray" bordered>
+            <span key={t} className="tag">
               {t}
-            </Tag>
+            </span>
           ))}
         </div>
       )}
