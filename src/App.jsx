@@ -8,7 +8,7 @@ import About from './pages/About.jsx';
 import { SITE } from './config.js';
 
 const TITLES = {
-  '/': `主页 - ${SITE.pageTitle}`,
+  '/': `首页 - ${SITE.pageTitle}`,
   '/archive': `归档 - ${SITE.pageTitle}`,
   '/about': `关于 - ${SITE.pageTitle}`,
 };
@@ -28,7 +28,8 @@ export default function App() {
   }, [navigate]);
 
   useEffect(() => {
-    // /post/ 路径由 Post 组件设置具体标题，这里先给默认值避免 undefined
+    // /post/ 路径由 Post 组件设置具体标题，跳过避免覆盖
+    if (location.pathname.startsWith('/post/')) return;
     document.title = TITLES[location.pathname] ?? SITE.pageTitle;
   }, [location]);
 
