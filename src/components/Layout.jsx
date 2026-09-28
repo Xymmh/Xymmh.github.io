@@ -33,7 +33,9 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="site-footer">
-        © {new Date().getFullYear()} {SITE.author} · Powered by React + GitHub Pages
+        <div className="footer-card">
+          © {new Date().getFullYear()} {SITE.author} · Powered by React + GitHub Pages
+        </div>
       </footer>
       <BackToTop />
     </>

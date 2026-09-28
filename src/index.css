@@ -126,11 +126,33 @@ a:hover {
 }
 
 .site-footer {
-  border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: 13px;
   text-align: center;
-  padding: 24px 20px 32px;
+  padding: 24px 20px 40px;
+}
+
+/* 页脚版权：液态玻璃 pill */
+.footer-card {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .footer-card {
+  background: rgba(40, 44, 52, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ---------- 文章列表 ---------- */
