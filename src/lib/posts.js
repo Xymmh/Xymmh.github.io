@@ -65,10 +65,15 @@ export const posts = Object.entries(files)
       dateFormatted: meta.date ? formatDate(meta.date) : '',
       tags: Array.isArray(meta.tags) ? meta.tags : meta.tags ? [meta.tags] : [],
       summary: meta.summary || '',
+      pinned: meta.pinned === 'true',
       body,
     };
   })
-  .sort((a, b) => (a.date < b.date ? 1 : -1));
+  // 置顶贴优先，其余按日期倒序
+  .sort((a, b) => {
+    if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+    return a.date < b.date ? 1 : -1;
+  });
 
 export function getPost(slug) {
   return posts.find((p) => p.slug === slug);

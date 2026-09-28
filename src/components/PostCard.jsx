@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 export default function PostCard({ post }) {
   return (
     <article className="post-card">
-      <div className="post-card-date">{post.dateFormatted}</div>
+      <div className="post-card-meta">
+        {post.pinned && <span className="post-card-pinned">置顶</span>}
+        <span className="post-card-date">{post.dateFormatted}</span>
+      </div>
       <h2 className="post-card-title">
         <Link to={`/post/${post.slug}`}>{post.title}</Link>
       </h2>
