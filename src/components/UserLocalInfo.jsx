@@ -238,7 +238,6 @@ export default function UserLocalInfo() {
 
   return (
     <div className="user-info-card">
-      <div className="user-info-title">关于你</div>
       {error ? (
         <div className="user-info-placeholder">无法获取位置信息</div>
       ) : !info ? (
@@ -253,10 +252,7 @@ export default function UserLocalInfo() {
             </div>
           </div>
           <div className="user-info-side">
-            <div className="user-info-location">
-              {info.flag} {info.city}
-              {info.country ? `, ${info.country}` : ''}
-            </div>
+            <div className="user-info-location">{info.city}</div>
             <div className="user-info-time">{timeStr}</div>
           </div>
         </div>

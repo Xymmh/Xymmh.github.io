@@ -178,14 +178,6 @@ a:hover {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.user-info-title {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
 /* 左右并排：左天气，右地区+时间 */
 .user-info-grid {
   display: flex;
