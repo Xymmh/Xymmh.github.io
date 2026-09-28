@@ -96,7 +96,8 @@ a:hover {
 }
 
 .site-logo {
-  font-size: 20px;
+  font-family: 'Dancing Script', 'Brush Script MT', cursive;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }

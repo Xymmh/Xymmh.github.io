@@ -27,7 +27,7 @@ export default function Layout() {
             <ThemeToggle />
           </div>
         </div>
-        <ReadingProgress />
+        {!isHome && <ReadingProgress />}
       </header>
       <main className={mainClass}>
         <Outlet />
