@@ -5,11 +5,12 @@ import Home from './pages/Home.jsx';
 import Post from './pages/Post.jsx';
 import Archive from './pages/Archive.jsx';
 import About from './pages/About.jsx';
+import { SITE } from './config.js';
 
 const TITLES = {
-  '/': 'Xymmh 的博客',
-  '/archive': '归档 - Xymmh 的博客',
-  '/about': '关于 - Xymmh 的博客',
+  '/': `主页 - ${SITE.pageTitle}`,
+  '/archive': `归档 - ${SITE.pageTitle}`,
+  '/about': `关于 - ${SITE.pageTitle}`,
 };
 
 export default function App() {
@@ -27,8 +28,8 @@ export default function App() {
   }, [navigate]);
 
   useEffect(() => {
-    document.title = TITLES[location.pathname] ??
-      (location.pathname.startsWith('/post/') ? undefined : TITLES['/']);
+    // /post/ 路径由 Post 组件设置具体标题，这里先给默认值避免 undefined
+    document.title = TITLES[location.pathname] ?? SITE.pageTitle;
   }, [location]);
 
   return (

@@ -1,5 +1,6 @@
 import { Result } from '@arco-design/web-react';
 import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { getPost } from '../lib/posts.js';
 import { SITE } from '../config.js';
 import Giscus from '../components/Giscus.jsx';
@@ -9,6 +10,12 @@ import TOC from '../components/TOC.jsx';
 export default function Post() {
   const { slug } = useParams();
   const post = getPost(slug);
+
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} - ${SITE.pageTitle}`;
+    }
+  }, [post]);
 
   if (!post) {
     return (
@@ -24,8 +31,6 @@ export default function Post() {
       />
     );
   }
-
-  document.title = `${post.title} - ${SITE.title}`;
 
   // 字数：去掉 Markdown 符号后的字符数；阅读时长按 400 字/分钟估算
   const wordCount = post.body.replace(/[\s#>*_\-\[\]()`!]/g, '').length;

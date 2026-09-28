@@ -1,6 +1,7 @@
 // 站点配置
 export const SITE = {
   title: "Xymmh's Blog",
+  pageTitle: "Xymmh's Page",
   author: 'Xymmh',
   description: '架构更好的世界',
   github: 'https://github.com/Xymmh',
