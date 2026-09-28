@@ -9,6 +9,9 @@ export const SITE = {
   zhihu: 'https://www.zhihu.com/people/meng-hu-83-39',
   bilibili: 'https://space.bilibili.com/52716968',
   douyin: 'https://v.douyin.com/Ed_tFvBGx3M/',
+  wikipedia: 'https://zh.wikipedia.org/wiki/User:Xymmh',
+  instagram: 'https://www.instagram.com/xym_mh/',
+  linkedin: 'https://www.linkedin.com/in/wql',
 };
 
 // Giscus 评论配置（基于 GitHub Discussions，访客用 GitHub 账号登录评论）

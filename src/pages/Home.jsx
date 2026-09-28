@@ -83,6 +83,49 @@ export default function Home() {
               </svg>
               抖音
             </a>
+            <a
+              className="profile-social"
+              href={SITE.wikipedia}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="维基百科"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18" />
+                <path d="M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z" />
+              </svg>
+              维基
+            </a>
+            <a
+              className="profile-social"
+              href={SITE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
+              </svg>
+              Instagram
+            </a>
+            <a
+              className="profile-social"
+              href={SITE.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <line x1="7.5" y1="10" x2="7.5" y2="17" />
+                <circle cx="7.5" cy="7" r="0.8" fill="currentColor" stroke="none" />
+                <path d="M11 17v-7h2.5a2 2 0 0 1 2 2v5" />
+              </svg>
+              LinkedIn
+            </a>
           </div>
         </div>
         {/* 访客位置天气与时间卡片 */}
