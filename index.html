@@ -6,8 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Xymmh 的个人博客" />
     <title>Xymmh 的博客</title>
-    <script type="module" crossorigin src="/assets/index-C9iE7t-D.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-oqr1VgxD.css">
+    <script>
+      // 防止亮暗切换闪烁：在 React 渲染前先按本地存储/系统偏好设置主题
+      (function () {
+        var t = localStorage.getItem('blog-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-BuTnsD_Z.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cdvw8QKl.css">
   </head>
   <body>
     <div id="root"></div>
