@@ -155,6 +155,81 @@ a:hover {
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
+/* ---------- 访客位置天气与时间卡片 ---------- */
+.user-info-card {
+  margin-top: 18px;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+[data-theme="dark"] .user-info-card {
+  background: rgba(40, 44, 52, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.user-info-title {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.user-info-weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-info-weather-text {
+  text-align: left;
+}
+
+.user-info-temp {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.user-info-cond {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.user-info-location {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.user-info-time {
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+.user-info-placeholder {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  padding: 14px 0;
+}
+
 /* ---------- 文章列表 ---------- */
 .post-list {
   display: flex;
@@ -649,8 +724,10 @@ a:hover {
     order: 2;
     position: static;
   }
-  .profile-card {
+  .profile-card,
+  .user-info-card {
     max-width: 360px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

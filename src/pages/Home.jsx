@@ -1,6 +1,7 @@
 import { Empty } from '@arco-design/web-react';
 import { posts } from '../lib/posts.js';
 import PostCard from '../components/PostCard.jsx';
+import UserLocalInfo from '../components/UserLocalInfo.jsx';
 import { SITE } from '../config.js';
 
 export default function Home() {
@@ -25,6 +26,8 @@ export default function Home() {
             GitHub →
           </a>
         </div>
+        {/* 访客位置天气与时间卡片 */}
+        <UserLocalInfo />
       </aside>
 
       {/* 右侧：文章列表 */}
