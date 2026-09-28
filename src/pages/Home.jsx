@@ -55,6 +55,34 @@ export default function Home() {
               </svg>
               知乎
             </a>
+            <a
+              className="profile-social"
+              href={SITE.bilibili}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="哔哩哔哩"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="6" width="20" height="14" rx="3" />
+                <path d="M7 2l3 4M17 2l-3 4" />
+                <path d="M8 13h3M13 13h3" />
+              </svg>
+              B站
+            </a>
+            <a
+              className="profile-social"
+              href={SITE.douyin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="抖音"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+              </svg>
+              抖音
+            </a>
           </div>
         </div>
         {/* 访客位置天气与时间卡片 */}

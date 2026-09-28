@@ -7,6 +7,8 @@ export const SITE = {
   github: 'https://github.com/Xymmh',
   v2ex: 'https://www.v2ex.com/member/Xymmh',
   zhihu: 'https://www.zhihu.com/people/meng-hu-83-39',
+  bilibili: 'https://space.bilibili.com/52716968',
+  douyin: 'https://v.douyin.com/Ed_tFvBGx3M/',
 };
 
 // Giscus 评论配置（基于 GitHub Discussions，访客用 GitHub 账号登录评论）
