@@ -2,8 +2,10 @@
 export const SITE = {
   title: "Xymmh's Blog",
   author: 'Xymmh',
-  description: '记录技术与生活',
+  description: '架构更好的世界',
   github: 'https://github.com/Xymmh',
+  v2ex: 'https://www.v2ex.com/member/Xymmh',
+  zhihu: 'https://www.zhihu.com/people/meng-hu-83-39',
 };
 
 // Giscus 评论配置（基于 GitHub Discussions，访客用 GitHub 账号登录评论）
