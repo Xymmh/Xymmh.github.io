@@ -244,7 +244,7 @@ export default function UserLocalInfo() {
       ) : !info ? (
         <div className="user-info-placeholder">获取中…</div>
       ) : (
-        <>
+        <div className="user-info-grid">
           <div className="user-info-weather">
             <WeatherIcon code={info.code} />
             <div className="user-info-weather-text">
@@ -252,12 +252,14 @@ export default function UserLocalInfo() {
               <div className="user-info-cond">{weatherText(info.code)}</div>
             </div>
           </div>
-          <div className="user-info-location">
-            {info.flag} {info.city}
-            {info.country ? `, ${info.country}` : ''}
+          <div className="user-info-side">
+            <div className="user-info-location">
+              {info.flag} {info.city}
+              {info.country ? `, ${info.country}` : ''}
+            </div>
+            <div className="user-info-time">{timeStr}</div>
           </div>
-          <div className="user-info-time">{timeStr}</div>
-        </>
+        </div>
       )}
     </div>
   );
