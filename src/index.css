@@ -190,7 +190,6 @@ a:hover {
 .user-info-grid {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
 }
 
@@ -198,6 +197,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex: 0 0 auto; /* 天气部分保持内容宽度，不收缩 */
 }
 
 .user-info-weather svg {
@@ -224,12 +224,17 @@ a:hover {
 
 .user-info-side {
   text-align: right;
+  flex: 1 1 auto; /* 右侧占据剩余空间 */
+  min-width: 0; /* 允许收缩，防止撑破容器 */
 }
 
 .user-info-location {
   font-size: 12px;
   color: var(--color-text-secondary);
   margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 地区过长时省略号截断，避免换行 */
 }
 
 .user-info-time {
