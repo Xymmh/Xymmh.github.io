@@ -515,3 +515,120 @@ a:hover {
   .site-nav { gap: 16px; font-size: 14px; }
   .main-container { padding: 32px 16px 64px; }
 }
+
+/* ---------- 首页：左右分栏布局 ---------- */
+/* 首页需要更宽的容器以容纳两栏（profile + 文章列表） */
+.main-container-home {
+  max-width: 1080px;
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* 左侧个人资料卡片：桌面端滚动吸顶 */
+.home-profile {
+  position: sticky;
+  top: 96px;
+}
+
+.profile-card {
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+[data-theme="dark"] .profile-card {
+  background: rgba(40, 44, 52, 0.55);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* 头像：圆形 + 白色边框 + 柔和阴影 */
+.profile-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .profile-avatar {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.profile-bio {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.profile-github {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-github:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .profile-github {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 右侧文章列表 */
+.home-posts {
+  min-width: 0; /* 防止 grid 子项内容溢出 */
+}
+
+/* ---------- 响应式：移动端单列，文章在上、profile 在下居中 ---------- */
+@media (max-width: 768px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .home-posts {
+    order: 1;
+  }
+  .home-profile {
+    order: 2;
+    position: static;
+  }
+  .profile-card {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}

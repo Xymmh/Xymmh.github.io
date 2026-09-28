@@ -1,10 +1,14 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { SITE } from '../config.js';
 import ThemeToggle from './ThemeToggle.jsx';
 import ReadingProgress from './ReadingProgress.jsx';
 import BackToTop from './BackToTop.jsx';
 
 export default function Layout() {
+  const location = useLocation();
+  // 首页需要更宽的容器以容纳左右分栏布局（profile + 文章列表）
+  const isHome = location.pathname === '/';
+  const mainClass = isHome ? 'main-container main-container-home' : 'main-container';
   return (
     <>
       <header className="site-header">
@@ -25,7 +29,7 @@ export default function Layout() {
         </div>
         <ReadingProgress />
       </header>
-      <main className="main-container">
+      <main className={mainClass}>
         <Outlet />
       </main>
       <footer className="site-footer">
