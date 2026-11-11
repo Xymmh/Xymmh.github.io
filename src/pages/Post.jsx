@@ -41,11 +41,23 @@ export default function Post() {
       <TOC key={slug} />
       <article>
       <header className="post-header">
+        <Link to="/" className="post-back">← 返回首页</Link>
+        {post.tags.length > 0 && (
+          <div className="post-tags">
+            {post.tags.map((t) => (
+              <span key={t} className="tag">{t}</span>
+            ))}
+          </div>
+        )}
         <h1 className="post-title">{post.title}</h1>
         <div className="post-meta">
-          <span>{post.dateFormatted}</span>
+          <img className="post-meta-avatar" src={`${SITE.github}.png`} alt="" />
           <span>{SITE.author}</span>
+          <span className="post-meta-sep">·</span>
+          <span>{post.dateFormatted}</span>
+          <span className="post-meta-sep">·</span>
           <span>约 {wordCount} 字</span>
+          <span className="post-meta-sep">·</span>
           <span>{readTime} 分钟阅读</span>
         </div>
       </header>
