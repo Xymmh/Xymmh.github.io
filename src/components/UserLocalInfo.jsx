@@ -237,7 +237,7 @@ export default function UserLocalInfo() {
     : '--:--:--';
 
   return (
-    <div className="user-info">
+    <div className="user-info-card">
       {error ? (
         <div className="user-info-placeholder">无法获取位置信息</div>
       ) : !info ? (
